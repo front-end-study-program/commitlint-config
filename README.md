@@ -24,23 +24,55 @@
 ## commitizen
 
 1. install
-```shell
-pnpm i -D commitizen cz-conventional-changelog
-```
+
+	```shell
+ 	pnpm i -D commitizen cz-conventional-changelog
+	```
+
 2. settings
-```json
-{
-	"script": {
-		"commit": "git-cz"
-	},
-	"config": {
-		"commitizen": {
-			"path": "node_modules/cz-conventional-changelog"
+
+	```json
+	{
+		"script": {
+			"commit": "git-cz"
+		},
+		"config": {
+			"commitizen": {
+				"path": "node_modules/cz-conventional-changelog"
+			}
 		}
 	}
-}
-```
+	```
+
 3. used
-```shell
-npm run commit // 替代 git commit 
-```
+
+	```shell
+	npm run commit // 替代 git commit
+	```
+
+## commitlint (推荐)
+
+### commit-msg 配置
+
+1. install
+
+	```shell
+	pnpm i -D husky @commitlint/cli @commitlint/config-conventional
+	```
+
+2. settings
+
+	2.1 在根目录下创建 commitlint.config.js 文件，配置如下：
+
+	```js
+	// commitlint.config.js
+	module.exports = {
+		extends: ["@commitlint/config-conventional"]
+	}
+	```
+
+	2.2 在终端运行以下命令，生成 husky 的 commit-msg 钩子拦截，会在 git commit 的时候运行 commitlint 的命令进行 commit 提交信息验证
+
+	``` shell
+	npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
+	```

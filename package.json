@@ -1,7 +1,7 @@
 {
   "name": "commitlint-config",
   "version": "1.0.0",
-  "description": "commitlint share config",
+  "description": "commitlint commitizen study project",
   "main": "index.js",
   "scripts": {
     "commit": "git-cz"
@@ -15,7 +15,10 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.0"
   }
 }
