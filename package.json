@@ -4,7 +4,8 @@
   "description": "commitlint commitizen study project",
   "main": "index.js",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "lint": "eslint --fix"
   },
   "config": {
     "commitizen": {
@@ -19,6 +20,8 @@
     "@commitlint/config-conventional": "^17.0.3",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.0"
+    "eslint": "^8.20.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3"
   }
 }

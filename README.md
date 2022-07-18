@@ -76,3 +76,34 @@
 	``` shell
 	npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
 	```
+
+### pre-commit 配置
+
+1. install
+
+	```shell
+	pnpm i lint-staged husky -D
+	```
+
+2. settings
+	2.1 在 package.json 文件中配置格式化的脚本命令以及配置需要检查的文件
+
+	```json
+	// package.json
+	{
+		"script": {
+			"lint": "eslint --fix"
+		},
+		"lint-staged": {
+			"**/*.{js,jsx,tsx,ts}": [
+				"npm run lint"
+			],
+		}
+	}
+	```
+
+	2.2 在终端运行以下命令，生成 husky 的 pre-commit 钩子拦截，会在 git commit 之前执行 npx --no -- lint-staged 命令来执行 npm run lint 进行代码检查。
+
+	```shell
+	npx husky add .husky/pre-commit "npx --no -- lint-staged"
+	```
